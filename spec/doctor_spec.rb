@@ -1,6 +1,7 @@
 require('spec_helper')
 
 describe(Doctor) do
+  #As an administrator, I want to add a doctor to the database with a name and specialty.
   describe('#initialize') do
     it("returns the id, name, and specialty of the doctor") do
       new_doctor = Doctor.new({:name => 'Doogy Houser', :specialty_id => 1, :id => nil})
@@ -32,3 +33,7 @@ describe(Doctor) do
     end
   end
 end
+
+
+
+#As an administrator, I want to be able to assign a patient to a doctor for care. (Hint: Doctors will have a one-to-many relationship with their patients.)

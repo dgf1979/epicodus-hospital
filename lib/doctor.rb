@@ -15,7 +15,15 @@ class Doctor
   end
 
   define_singleton_method(:all) do
-    []
+    doctors = []
+    returned_doctors = DB.exec("SELECT * FROM doctor")
+    returned_doctors.each() do |doctor|
+      name = doctor.fetch("name")
+      specialty_id = doctor.fetch("specialty_id")
+      id = doctor.fetch('id')
+      doctors.push(Doctor.new({:name => name, :specialty_id => specialty_id, :id => id}))
+    end
+    doctors
   end
 
 end

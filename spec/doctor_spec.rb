@@ -67,5 +67,4 @@ describe(Doctor) do
       expect(Doctor.all_by_specialty(1).length).to(eq(2))
     end
   end
-
 end

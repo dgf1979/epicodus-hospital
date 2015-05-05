@@ -9,7 +9,7 @@ CREATE DATABASE hospital;
 
 CREATE TABLE doctor (id serial PRIMARY KEY, name varchar, specialty_id int);
 
-CREATE TABLE patient (id serial PRIMARY KEY, name varchar, birthdate timestamp);
+CREATE TABLE patient (id serial PRIMARY KEY, name varchar, birthdate timestamp, doctor_id int);
 
 CREATE TABLE specialty (id serial PRIMARY KEY, description varchar);
 

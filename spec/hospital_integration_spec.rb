@@ -12,6 +12,14 @@ describe('doctor office', {:type => :feature}) do
     click_button('Add Doctor')
     expect(page).to have_content('Doogie Houser')
   end
+
+  it('add a patient') do
+    visit('/patients/new')
+    fill_in('name', :with => 'Daryl')
+    fill_in('birthdate', :with => '05/05/2015')
+    click_button('Add Patient')
+    expect(page).to have_content('Daryl')
+  end
 end
 
 

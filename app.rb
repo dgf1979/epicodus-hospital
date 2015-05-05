@@ -38,6 +38,14 @@ get('/patients/new') do
   erb(:new_patient_form)
 end
 
+post('/patients/new') do
+  name = params.fetch('name')
+  birthdate = params.fetch('birthdate')
+  new_patient = Patient.new({:name => name, :birthdate => birthdate, :doctor_id => nil, :id => nil})
+  new_patient.save()
+  @patients = Patient.all()
+  erb(:patients)
+end
 #view a patient details
 get('/patients/:id') do
   erb(:patient_details)

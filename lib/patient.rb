@@ -19,4 +19,17 @@ class Patient
     @doctor_id = doctor_id
   end
 
+  define_singleton_method(:all) do
+    patients = []
+    sql = "SELECT * FROM patient"
+    returned_patients = DB.exec(sql)
+    returned_patients.each() do |patient|
+      name = patient.fetch("name")
+      birthdate = patient.fetch("birthdate")
+      doctor_id = patient.fetch("doctor_id")
+      id = patient.fetch("id")
+      patients.push(Patient.new({:name => name, :birthdate => birthdate, :doctor_id => doctor_id, :id => id}))
+    end
+    patients
+  end
 end

@@ -35,4 +35,8 @@ class Doctor
     Doctor.new({:name => name, :specialty_id => specialty_id, :id => id})
   end
 
+  define_method(:all_patients) do
+    []
+  end
+
 end

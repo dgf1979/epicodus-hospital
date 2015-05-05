@@ -1,6 +1,7 @@
 require('spec_helper')
 
 describe(Patient) do
+
   #As an administrator, I want to add a patient with their name and birthdate.
   describe('#id') do
     it('adds a patient') do
@@ -12,6 +13,7 @@ describe(Patient) do
     end
   end
 
+  #As an administrator, I want to be able to assign a patient to a doctor for care. 
   describe('#assign_doctor') do
     it ("assigns a doctor id to a patient") do
       new_doctor = Doctor.new(:name => "Doctor", :specialty_id => 3, :id => nil)

@@ -32,8 +32,23 @@ describe(Doctor) do
       expect(Doctor.find(doctor2_id).name()).to( eq( new_doctor2.name() ) )
     end
   end
+
+  #As a doctor, I want to see the list of patients that have been assigned to me.
+  describe('#all_patients') do
+    it('return all patients assigned to this doctor') do
+      #add doctor
+      new_doctor = Doctor.new({:name => 'Doogy Houser', :specialty_id => 1, :id => nil})
+      new_doctor.save()
+      #patient 1
+      new_patient = Patient.new({ :name => 'Drew', :birthdate => '1979-09-30', :doctor_id => nil})
+      new_patient.save()
+      new_patient.assign_doctor(new_doctor.id())
+      #patient 2
+      new_patient = Patient.new({ :name => 'Bob', :birthdate => '1955-09-30', :doctor_id => nil})
+      new_patient.save()
+      new_patient.assign_doctor(new_doctor.id())
+      expect(new_doctor.all_patients().length).to(eq(2))
+    end
+  end
+
 end
-
-
-
-#As an administrator, I want to be able to assign a patient to a doctor for care. (Hint: Doctors will have a one-to-many relationship with their patients.)

@@ -26,4 +26,8 @@ class Doctor
     doctors
   end
 
+  define_singleton_method(:find) do |id|
+    
+  end
+
 end

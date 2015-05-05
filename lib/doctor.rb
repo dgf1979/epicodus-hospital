@@ -27,7 +27,12 @@ class Doctor
   end
 
   define_singleton_method(:find) do |id|
-    
+    sql = "SELECT * FROM doctor WHERE id = #{id}"
+    doctor = DB.exec(sql).first()
+    name = doctor.fetch("name")
+    specialty_id = doctor.fetch("specialty_id")
+    id = doctor.fetch('id')
+    Doctor.new({:name => name, :specialty_id => specialty_id, :id => id})
   end
 
 end

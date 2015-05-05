@@ -4,8 +4,14 @@ require('spec_helper')
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
-describe('', {:type => :feature}) do
-
+describe('doctor office', {:type => :feature}) do
+  it('adds a doctor') do
+    visit('/doctors/new')
+    fill_in('name', :with => 'Doogie Houser')
+    select('Family Medicine', :from => "specialty")
+    click_button('Add Doctor')
+    expect(page).to have_content('Doogie Houser')
+  end
 end
 
 

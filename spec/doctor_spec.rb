@@ -51,4 +51,21 @@ describe(Doctor) do
     end
   end
 
+  #As a patient, I want to see a list of all the doctors in a particular specialty.
+  #A doctor will only have one specialty.
+  describe('.all_by_specialty') do
+    it('return all doctors having the given specialty id') do
+      #add doctor
+      new_doctor = Doctor.new({:name => 'Doogy Houser', :specialty_id => 1, :id => nil})
+      new_doctor.save()
+      #add doctor
+      new_doctor = Doctor.new({:name => 'House', :specialty_id => 2, :id => nil})
+      new_doctor.save()
+      #add doctor
+      new_doctor = Doctor.new({:name => 'Strangelove', :specialty_id => 1, :id => nil})
+      new_doctor.save()
+      expect(Doctor.all_by_specialty(1).length).to(eq(2))
+    end
+  end
+
 end

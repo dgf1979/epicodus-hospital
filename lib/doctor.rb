@@ -36,6 +36,19 @@ class Doctor
   end
 
   define_method(:all_patients) do
+    patients = []
+    sql = "SELECT * FROM patient WHERE doctor_id = #{@id}"
+    returned_patients = DB.exec(sql)
+    returned_patients.each() do |patient|
+      name = patient.fetch("name")
+      birthdate = patient.fetch("birthdate")
+      doctor_id = patient.fetch("doctor_id")
+      patients.push(Patient.new(:name => name, :birthdate => birthdate, :doctor_id => doctor_id))
+    end
+    patients
+  end
+
+  define_singleton_method(:all_by_specialty) do |specialty_id|
     []
   end
 

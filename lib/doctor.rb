@@ -14,5 +14,8 @@ class Doctor
     @id = result.first().fetch("id").to_i()
   end
 
+  define_singleton_method(:all) do
+    []
+  end
 
 end
